@@ -1,5 +1,5 @@
 
-export class Usuario {
+export class Pelicula {
 
     constructor(
 
