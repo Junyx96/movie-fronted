@@ -16,6 +16,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromiseComponent } from './promise/promise.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './miLista/usuarios/usuarios.component';
+import { PeliculasComponent } from './miLista/peliculas/peliculas.component';
 
 
 
@@ -29,6 +31,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     PromiseComponent,
     RxjsComponent,
     PerfilComponent,
+    UsuariosComponent,
+    PeliculasComponent,
   ],
   
   exports:[

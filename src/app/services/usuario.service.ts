@@ -3,7 +3,8 @@ import { Injectable, NgZone } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
-import { tap, map, catchError } from 'rxjs/operators';
+import { CargarUsuario } from '../interfaces/cargar-usuarios.interface';
+import { tap, map, catchError, delay } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Usuario } from '../models/usuario.model';
@@ -19,7 +20,7 @@ declare const gapi: any
 export class UsuarioService {
 
   public auth2:any
-  public usuario:Usuario
+  public usuario: Usuario
 
 
   constructor(private http: HttpClient,
@@ -34,7 +35,15 @@ export class UsuarioService {
   }
 
   get uid():string{
-    return this.usuario._id || ''
+    return this.usuario._id || '';
+  }
+
+  get headers(){
+    return {
+      headers:{
+        'x-token': this.token
+      }
+    }
   }
 
 
@@ -74,7 +83,7 @@ export class UsuarioService {
       tap((resp:any) =>{
         const {email, google, img, nombre, role, _id} = resp.usuario
 
-        this.usuario = new Usuario(nombre, email, '', img, google, _id, role)
+        this.usuario = new Usuario(nombre, email, '', img, google, role, _id)
         localStorage.setItem('token', resp.token)
       }),
       map(resp=> true),
@@ -101,11 +110,7 @@ export class UsuarioService {
       role: this.usuario.role
     }
 
-    return this.http.put(`${base_url}/usuarios/${this.uid}`, data, {
-      headers:{
-        'x-token': this.token
-      }
-    })
+    return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers)
 
   }
 
@@ -129,6 +134,36 @@ export class UsuarioService {
                 )
   }
 
+  cargarUsurios(desde: number = 0){
+    const url= `${base_url}/usuarios?desde=${desde}`
+    return this.http.get<CargarUsuario>(url, this.headers)
+                .pipe(
+                  //Probar
+                  // delay(3000),
+                  map(resp =>{
+                    const usuarios = resp.usuarios.map(
+                      user => new Usuario(user.nombre, user.email, '', user.img, user.google, user.role, user._id)
+                    )
+                    return {
+                      total:resp.total,
+                      usuarios
+                    }
+                  })
+                )
+
+
+  }
+
+eliminarUsuario( usuario: Usuario){
+  const url= `${base_url}/usuarios/${this,usuario._id}`
+  return this.http.delete(url, this.headers)
+}
+
+guardarUsuario(usuario: Usuario) {
+
+  return this.http.put(`${base_url}/usuarios/${usuario._id}`, usuario, this.headers)
+
+}
 
   
 }
