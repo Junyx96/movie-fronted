@@ -1,0 +1,154 @@
+<div class="card-body">
+    <form [formGroup]="peliculaForm"
+            (ngSubmit)="guardarPelicula()">
+
+        <div class="form-body">
+            <h3 class="box-title m-t-40">Pelicula</h3>
+            <hr>
+            <div class="row">
+                <!-- /span -->
+                <div class="text-center">
+                    <img class="img-avatar w200" 
+                        formControlName="img"
+                        src="http://localhost:4000/api/upload/peliculas/e56db5c7-89bb-454f-8bf8-d509a90f86f7.png">
+                    <!-- <img *ngIf="imgTemp" [src]="imgTemp" class="img-avatar"> -->
+                    <input type="file">
+                </div>
+                <!-- <input type="file"
+                        (change)="cambiarImagen($event.target.files[0])"> -->
+                <!-- <button type="button" 
+                        class="btn btn-success btn-block waves-effect waves-light m-r-10"
+                        [disabled]="!imagenSubir"
+                        (click)="subirImagen()">
+                    <i class="fa fa-save"></i>
+                    Cambiar Imagen
+                    </button> -->
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label>Titulo</label>
+                        <input type="text" 
+                        formControlName="titulo"
+                        class="form-control" 
+                        placeholder="Titulo de la pelicula"
+                        >
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Director</label>
+                        <input 
+                        type="text"
+                        formControlName="director" 
+                        class="form-control" 
+                        placeholder="Nombre del Director">
+
+                    </div>
+                </div>
+                <!--/span-->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Calificacion</label>
+                        <select class="form-control custom-select"
+                                formControlName="calificacion">
+                            <option selected disabled>--Selecciona uno--</option>
+                            <option value="Mayor 18">+18</option>
+                            <option value="Familia">Para toda la familia</option>
+                        </select>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Descripcion</label>
+                        <textarea class="form-control"
+                        formControlName="descripcion" 
+                        rows="5" 
+                        placeholder="Descripcion de la pelicula">
+                    </textarea>
+                    </div>
+                </div>
+                <!--/span-->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Genero</label>
+                        <select class="form-control custom-select"
+                                formControlName="genero">
+
+                            <option selected disabled>--Seleccione uno--</option>
+                            <option value="Accion">Accion</option>
+                            <option value="Aventura">Aventura</option>
+                            <option value="Comedia">Comedia </option>
+                            <option value="Drama">Drama</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Ciencia">Ciencia Ficcíon</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Infantil">Infantil</option>
+                            <option value="Musicales">Musicales</option>
+                        </select>
+                    </div>
+                </div>
+                <!--/span-->
+
+                <div class="form-group row">
+                    <label for="exampleInputEmail3" class="col-sm-3 control-label">Favorito</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <select class="form-control"
+                                    formControlName="favorito">
+                                
+                                <option selected disabled>--Seleccione uno--</option>   
+                                <option value="true">No Me gusta</option>
+                                <option value="true">Me gusta</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Favorito</label>
+                        <br>
+                        <button class="btn btn-outline-success w-50 "
+                                formControlName="favorito"
+                               
+                                type="button">
+
+                        <i class="fa fa-heart">  
+                        </i>
+                        Me gusta 
+                        </button>
+                
+                        <button class="btn btn-outline-danger w-50 "
+                                
+                                  
+                                type="button">
+                        <i class="fa fa-heart-o">
+                        </i>
+                        No me gusta 
+                        </button>
+                    </div>
+                </div> -->
+                 
+            
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" 
+            [disabled]="peliculaForm.invalid"
+            class="btn btn-success btn-block"> 
+            <i class="fa fa-save">
+            </i>
+            Guardar
+        </button>
+            <!-- <br>
+            <button type="button" class="btn btn-inverse btn-block">Cancel</button> -->
+        </div>
+    </form>
+</div>

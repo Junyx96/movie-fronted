@@ -11,6 +11,8 @@ import { AuthGuard } from '../guards/auth.guard';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './miLista/usuarios/usuarios.component';
 import { PeliculasComponent } from './miLista/peliculas/peliculas.component';
+import { FormPeliculaComponent } from './form-pelicula/form-pelicula.component';
+import { PeliculaComponent } from './miLista/peliculas/pelicula.component';
 
 
 
@@ -32,6 +34,8 @@ const routes: Routes = [
     // Mi Lista    
     {path: 'usuarios', component: UsuariosComponent, data:{titulo:'Usuarios'}},
     {path: 'peliculas', component: PeliculasComponent, data:{titulo:'Peliculas'}},
+    {path: 'pelicula/:id', component: PeliculaComponent, data:{titulo:'Pelicula'}},
+    {path: 'formpeliculas', component: FormPeliculaComponent, data:{titulo:'CrearPelicula'}},
 
     // {path: '', redirectTo:'/dashboard', pathMatch:'full'},
     ]

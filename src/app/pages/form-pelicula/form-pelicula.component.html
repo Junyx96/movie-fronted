@@ -1,0 +1,121 @@
+<div class="card-body">
+    <form action="#">
+        <div class="form-body">
+            <h3 class="box-title m-t-40">Pelicula</h3>
+            <hr>
+            <div class="row">
+                <!-- /span -->
+                <div class="text-center">
+                    <img class="img-avatar">
+                    <!-- <img *ngIf="imgTemp" [src]="imgTemp" class="img-avatar"> -->
+                    <input type="file">
+                </div>
+                <!-- <input type="file"
+                        (change)="cambiarImagen($event.target.files[0])"> -->
+                <!-- <button type="button" 
+                        class="btn btn-success btn-block waves-effect waves-light m-r-10"
+                        [disabled]="!imagenSubir"
+                        (click)="subirImagen()">
+                    <i class="fa fa-save"></i>
+                    Cambiar Imagen
+                    </button> -->
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label>Titulo</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Director</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <!--/span-->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Clasificacion</label>
+                        <select class="form-control custom-select">
+                            <option>--Selecciona uno--</option>
+                            <option>+18</option>
+                            <option>Para toda la familia</option>
+                        </select>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Descripcion</label>
+                        <textarea class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+                <!--/span-->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Genero</label>
+                        <select class="form-control custom-select">
+                            <option>--Selecciona uno--</option>
+                            <option>Aventura</option>
+                            <option>Comedia</option>
+                            <option>Drama</option>
+                            <option>Terror</option>
+                            <option>Ciencia Ficcíon</option>
+                            <option>Suspense</option>
+                            <option>Infantil</option>
+                            <option>Musicales</option>
+                        </select>
+                    </div>
+                </div>
+                <!--/span-->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Favorito</label>
+                        <br>
+                        <button class="btn btn-outline-success w-50 "type="button">
+                        <i class="fa fa-heart"></i>
+                        Me gusta 
+                        </button>
+                
+                        <button class="btn btn-outline-danger w-50 " type="button">
+                        <i class="fa fa-heart-o"></i>
+                        No me gusta 
+                        </button>
+                    </div>
+                </div>
+                  <!-- <div class="form-group">
+                    <label>Favorito</label>
+                    <br>
+                    <button
+                    *ngIf="pelicula.favorito"
+                    (click)="pelicula.favorito=false"
+                    class="btn btn-outline-success w-50 " 
+                    type="button">
+                      <i class="fas fa-heart"></i>
+                      Me gusta 
+                    </button>
+            
+                    <button
+                    *ngIf="!pelicula.favorito"
+                    (click)="pelicula.favorito=true"
+                    class="btn btn-outline-danger w-50 " 
+                    type="button">
+                      <i class="far fa-heart"></i>
+                      No me gusta 
+                    </button>
+                  </div>
+             -->
+            
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success btn-block"> <i class="fa fa-save"></i> Save</button>
+            <br>
+            <button type="button" class="btn btn-inverse btn-block">Cancel</button>
+        </div>
+    </form>
+</div>

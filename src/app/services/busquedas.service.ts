@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
+import { Pelicula } from '../models/pelicula.model';
 
 
 const base_url = environment.base_url
@@ -34,9 +35,15 @@ export class BusquedasService {
     )
   }
 
+  private transformarPeliculas(resultados: any[]):Pelicula[]{
+
+    return resultados
+  }
 
 
-  buscar(tipo: 'usuarios' | 'peliculas', termino:string){
+
+
+  buscar(tipo: 'usuarios'|'peliculas', termino:string){
     const url= `${base_url}/todo/coleccion/${tipo}/${termino}`
     return this.http.get<any[]>(url, this.headers)
                 .pipe(
@@ -45,6 +52,9 @@ export class BusquedasService {
                     switch (tipo) {
                       case 'usuarios':
                         return this.transformarUsuarios(resp.resultados)
+
+                        case 'peliculas':
+                          return this.transformarPeliculas(resp.resultados)
                     
                       default:
                         return[]

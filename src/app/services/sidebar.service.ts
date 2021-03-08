@@ -23,6 +23,7 @@ export class SidebarService {
       submenu:[
         {titulo:'Usuarios', url:'usuarios'},
         {titulo:'Peliculas', url:'peliculas'},
+        {titulo:'CrearPelicula', url:'formpeliculas'},
       ]
     }
   ] 

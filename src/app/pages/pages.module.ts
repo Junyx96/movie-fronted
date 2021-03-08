@@ -18,6 +18,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './miLista/usuarios/usuarios.component';
 import { PeliculasComponent } from './miLista/peliculas/peliculas.component';
+import { FormPeliculaComponent } from './form-pelicula/form-pelicula.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { PeliculaComponent } from './miLista/peliculas/pelicula.component';
 
 
 
@@ -33,6 +36,8 @@ import { PeliculasComponent } from './miLista/peliculas/peliculas.component';
     PerfilComponent,
     UsuariosComponent,
     PeliculasComponent,
+    FormPeliculaComponent,
+    PeliculaComponent,
   ],
   
   exports:[
@@ -43,7 +48,8 @@ import { PeliculasComponent } from './miLista/peliculas/peliculas.component';
     AccountSettingsComponent,
     PromiseComponent,
     RxjsComponent,
-    PerfilComponent
+    PerfilComponent,
+    FormPeliculaComponent
 
   ],
 
@@ -53,7 +59,8 @@ import { PeliculasComponent } from './miLista/peliculas/peliculas.component';
     SharedModule,
     FormsModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ]
 })
 export class PagesModule { }

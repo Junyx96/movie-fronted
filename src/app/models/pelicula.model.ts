@@ -1,3 +1,10 @@
+interface _PeliculaUser{
+    _id:string
+    nombre:string
+    email:string
+    img:string
+}
+
 
 export class Pelicula {
 
@@ -7,10 +14,11 @@ export class Pelicula {
         public descripcion: string, 
         public director: string, 
         public genero: string, 
-        public calificacion: string, 
-        public img: string,  
-        public favorito: boolean,
-        public usuario: string,
+        public calificacion: string,
+        public _id: string, 
+        public img?: string,  
+        public favorito?: boolean,
+        public usuario?: _PeliculaUser,
 
     )   {
     }   

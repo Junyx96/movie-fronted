@@ -1,4 +1,164 @@
-<div class="row">
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar pelicula..."
+                        #txtTermino
+                        (keyup)="buscar( txtTermino.value )"/>
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row animated fadeIn fast"
+    *ngIf="cargando">
+    <div class="col-12">
+        
+        <div class="alert alert-info text-center">
+          <h4 class="alert-heading">Cargando</h4>
+          <i class="fa fa-spin fa-refresh fa-2x"></i>
+          <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div> 
+
+
+<div class="row"
+    *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Peliculas ({{ peliculas.length }})</h4>
+                        <h6 class="card-subtitle">
+                            Mis Peliculas
+                        </h6>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-right">
+                            <a class="btn btn-primary"
+                               routerLink="/dashboard/pelicula/nuevo">
+                                <i class="fa fa-hospital-o"></i> 
+                                Crear Pelicula
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">Cartelera</th>
+                                <th>Datos</th>
+                                <th class="w100 text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pelicula of peliculas">
+                                <td class="text-center"> 
+                                    <img [src]="pelicula.img | imagen:'peliculas'" 
+                                        [alt]="pelicula.titulo"
+                                        class="w100 cursor"
+                                        (click)="abrirModal(pelicula)"> 
+                                </td>
+                                <td>
+                                    Titulo: {{ pelicula.titulo }}
+                                    <br>
+                                    Director: {{pelicula.director}}
+                                    <br>
+                                    Descripcion: {{pelicula.descripcion}}
+                                    <br>
+                                    Genero: {{pelicula.genero}}
+                                    <br>
+                                    Calificacion: {{pelicula.calificacion}}
+                                    <br>
+                                    Favarito: {{pelicula.favorito}}
+                                </td>
+
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard','pelicula', pelicula._id ]" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    
+                                    <a class="cursor"
+                                        data-toggle="tooltip" 
+                                        data-original-title="Borrar"
+                                        (click)="borrarPelicula( pelicula )"> 
+                                        <i class="fa fa-close text-danger"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+<!-- 
+                <button class="btn btn-secondary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secondary">Siguientes</button> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -7,7 +167,56 @@
                         class="form-control"
                         placeholder="Buscar peliculas...">
 
+
+
             </div>
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="./formpeliculas" class="btn btn-danger">
+        <i class="fa fa-plus"></i>
+        Agregar
+        </button>
+    </div>
+</div>
+
+
+<div class="row animated fadeIn fast">
+    <div class="col-12"
+    *ngIf="cargando">
+
+        <div class="alert alert-success text-center">
+        <h4 class="alert-heading"> Cargando </h4>
+        <i class="fa fa-spin fa-refresh fa-2x"></i>
+        <p class="mb-0"> Espere por favor </p>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row"
+        *ngIf="!cargando">
+
+    <div class="col-12 m-t-30">
+        <h4 class="m-b-0">Peliculas ({{peliculas.length}})</h4>
+        <p class="text-muted m-t-0 font-12">Carteleras de mis peliculas</p>
+        <div class="card-columns" *ngFor="let pelicula of peliculas">
+            <div class="card cursor">
+                <img class="card-img-top img-fluid" 
+                [src]="pelicula.img | imagen:'peliculas' " 
+                [alt]="pelicula.titulo">
+
+                <div class="card-body">
+                    <h4 class="card-title">{{pelicula.titulo}}</h4>
+                    <p class="card-text">{{pelicula.descripcion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ -->
